@@ -1,0 +1,14 @@
+!!!
+html
+  head
+    title Sand Castle
+    script(src='//code.jquery.com/jquery-1.10.2.min.js')
+    script(src='socket.io/socket.io.js')
+    script(src='assets/javascripts/app.js')
+    link(rel='stylesheet' type='text/css' href='assets/stylesheets/app.css');
+  body
+    #content.row
+      #controls.unit.size1of6(style='background-color:blue; height: 50px;')
+        | controls
+      #sandbox.unit.last-unit(style='background-color:red; height: 50px;')
+        | sandbox
