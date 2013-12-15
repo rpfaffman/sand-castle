@@ -2,10 +2,11 @@
   "name": "sand-castle",
   "author": "Roy Pfaffman",
   "version": "0.0.0",
-  "description": "Collaborative front end brainstorming and wireframing.",
+  "description": "Collaborative frontend brainstorming and wireframing.",
   "dependencies": {
     "express": "latest",
     "express-partials": "latest",
+    "underscore": "latest",
     "jade": "latest",
     "node-sass": "latest",
     "socket.io": "latest"

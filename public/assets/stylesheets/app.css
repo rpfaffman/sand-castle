@@ -113,3 +113,22 @@ img {
 
 .s-hidden {
   display: none; }
+
+/*colors*/
+/*font*/
+/*shadow land*/
+#shadow-land #edit-modal {
+  display: none;
+  position: absolute;
+  width: 200px;
+  height: 50px; }
+
+/*chat*/
+#chat-container {
+  font-size: 14px;
+  font-family: "Trebuchet MS", Helvetica, sans-serif; }
+  #chat-container input[type=text] {
+    background-color: #dddddd; }
+  #chat-container #chat {
+    background-color: #dddddd;
+    color: black; }

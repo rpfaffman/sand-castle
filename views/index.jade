@@ -2,13 +2,24 @@
 html
   head
     title Sand Castle
-    script(src='//code.jquery.com/jquery-1.10.2.min.js')
-    script(src='socket.io/socket.io.js')
-    script(src='assets/javascripts/app.js')
+    include partials/js_manifest
     link(rel='stylesheet' type='text/css' href='assets/stylesheets/app.css');
   body
     #content.row
-      #controls.unit.size1of6(style='background-color:blue; height: 50px;')
-        | controls
-      #sandbox.unit.last-unit(style='background-color:red; height: 50px;')
-        | sandbox
+      #controls.unit.size1of6
+        .inner
+          h2 Controls
+          #chat-container.row
+            h3 Chat
+            #chat
+            input#chat-alias-field.size1of1(type='text' placeholder='your alias')
+            br
+            .row
+              input#chat-send-field.unit.size4of5(type='text' placeholder='send a message')
+              input#chat-send-button.unit.last-unit(type='button' value='send')
+      #sandbox-container.unit.size5of6
+        .inner
+          #sandbox
+            p Click me to start editing!
+      #shadow-land
+        include partials/edit_modal
