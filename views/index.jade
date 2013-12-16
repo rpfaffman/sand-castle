@@ -21,5 +21,14 @@ html
         .inner
           #sandbox
             p Click me to start editing!
+            p This is another paragraph
+            .random
+              | This is a random div.
+              p This is a paragraph in the random div
+              .random-nested
+                p This is a nested paragraph
+                p And another nested paragraph
+                p and yet another nested paragraph
+            p This is another paragraph
       #shadow-land
         include partials/edit_modal
