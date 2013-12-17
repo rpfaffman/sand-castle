@@ -11,11 +11,11 @@ $(document).ready(function() {
     var $editModal = $('#edit-modal');
     $('#edit-send-field').val(target.outerHTML);
     $editModal.css({ top: event.pageY, left: event.pageX });
-    $editModal.fadeIn();
+    $editModal.fadeIn(200);
     $('#edit-send-button').off();
     $('#edit-send-button').on('click', function() {
       sendEdit(target);
-      $editModal.fadeOut();
+      $editModal.fadeOut(200);
     }.bind(this));
   };
 

@@ -3,10 +3,36 @@
 
 /*colors*/
 $light-grey: #ddd;
+$dark-blue-green: #00202F;
+$light-blue-green: #00D5FF;
+$light-green-blue: #00FFAD;
 
 /*font*/
 $font-size: 14px;
 $font-family: "Trebuchet MS", Helvetica, sans-serif;
+$font-color: $light-blue-green;
+
+/*everything*/
+body {
+  background-color: $dark-blue-green;
+  color: $font-color;
+  font-family: $font-family;
+  font-size: $font-size;
+}
+
+input[type=button], input[type=text], textarea {
+  background-color: black;
+  color: $light-blue-green;
+  border: 1px solid $light-blue-green;
+}
+
+#controls {
+  text-align: right;
+}
+
+/*chat*/
+
+/*editing*/
 
 /*shadow land*/
 #shadow-land {
@@ -15,20 +41,6 @@ $font-family: "Trebuchet MS", Helvetica, sans-serif;
     position: absolute;
     width: 200px;
     height: 50px;
-  }
-}
-
-/*chat*/
-#chat-container {
-  font-size: $font-size;
-  font-family: $font-family;
-
-  input[type=text] {
-    background-color: $light-grey;
-  }
-
-  #chat { background-color: $light-grey;
-    color: black;
   }
 }
 
