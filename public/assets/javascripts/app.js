@@ -7,8 +7,6 @@ $(document).ready(function() {
   new Editor.Modal(new Editor.Sender());
 
   //Initialize the Chat
-
-  // CHAT
   Chat.Config.socket = socket;
   new Chat.Receiver();
   new Chat.Sender();

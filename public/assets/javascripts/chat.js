@@ -11,7 +11,8 @@ Chat.Config = {
 };
 
 Chat.Receiver = function() {
-  var socket = Editor.Config.socket;
+  var socket = Chat.Config.socket;
+  var $chat = $(Chat.Config.chatDivSelector);
 
   this.init = function() {
     this.listen();
@@ -19,8 +20,15 @@ Chat.Receiver = function() {
 
   this.listen = function() {
     socket.on('to_client.message', function(data) {
-      console.log('Received chat message from ' + data.sender + ': ' + data.message);
+      renderChatItem(data.sender, data.message);
     });
+  };
+
+  // private methods
+
+  var renderChatItem = function(alias, message) {
+    var chatItem = $('<div class="chat-item"><b>' + alias + ':</b> ' + message + '</div>').hide();
+    $(chatItem).appendTo($chat).slideDown();
   };
 
   this.init();
@@ -37,11 +45,8 @@ Chat.Sender = function() {
   };
 
   this.sendChatMessage = function() {
-    socket.emit('to_server.message',
-                {
-                  sender: $aliasField.val(),
-                  message: $messageField.val()
-                });
+    socket.emit('to_server.message', { sender: $aliasField.val(), message: $messageField.val() });
+    $messageField.val('');
   };
 
   this.init();
