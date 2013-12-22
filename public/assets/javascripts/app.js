@@ -8,19 +8,25 @@ $(document).ready(function() {
   new Editor.Modal(new Editor.Sender());
 
   //Initialize the Chat
-  Chat.Config.socket = socket;
+  Chat.Config.socket = chatSocket;
   var chatInterface = new Chat.Interface();
   var chatReceiver = new Chat.Receiver();
   chatReceiver.listen(function(data) {
     chatInterface.renderChatItem(data.sender, data.message);
   } );
-  var sender = new Chat.Sender();
+  var chatSender = new Chat.Sender();
 
   $(document).keypress(function(e) {
-    if(e.keyCode === 13) {
-      e.preventDefault();
-      chatInterface.renderInputBox(sender.sendMessage);
-    };
+    switch(e.keyCode) {
+      case 13: // enter for messages
+        e.preventDefault();
+        chatInterface.renderInputBox({ prompt: 'message', callback: chatSender.sendMessage });
+        break;
+      case 47: // '/' - forwardslash for commands (alias)
+        e.preventDefault();
+        chatInterface.renderInputBox({ prompt: 'command', callback: chatSender.sendCommand });
+        break;
+    }
   });
 
 });

@@ -6,7 +6,7 @@ Chat.Receiver = function() {
   };
 
   this.listen = function(callback) {
-    socket.on('to_client.message', callback);
+    socket.on('message', callback);
   };
 
   this.init();
