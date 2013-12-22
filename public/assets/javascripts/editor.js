@@ -48,11 +48,17 @@ Editor.Modal = function(sender) {
 Editor.Receiver = function(socket) {
   var socket = Editor.Config.socket;
 
+  this.init = function() {
+    this.listen();
+  };
+
   this.listen = function() {
     socket.on('to_client.edit', function(data) {
       $(data.targetSelector)[0].outerHTML = data.html;
     });
   };
+
+  this.init();
 };
 
 Editor.Sender = function() {

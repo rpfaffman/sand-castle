@@ -3,35 +3,15 @@ $(document).ready(function() {
 
   // Initialize the Editor
   Editor.Config.socket = socket;
-  var editorReceiver = new Editor.Receiver();
-  var editorSender = new Editor.Sender();
-  var editorModal = new Editor.Modal(editorSender);
-  editorReceiver.listen();
+  new Editor.Receiver();
+  new Editor.Modal(new Editor.Sender());
 
   //Initialize the Chat
 
   // CHAT
-  var $chat = $('#chat');
-  var $chatAliasField = $('#chat-alias-field');
-  var $chatSendField = $('#chat-send-field');
-  var $chatSendButton = $('#chat-send-button');
-
   Chat.Config.socket = socket;
-  var chatReceiver = new Chat.Receiver();
+  new Chat.Receiver();
+  new Chat.Sender();
 
-  // Receiving
-  socket.on('to_client.message', function(data) {
-    console.log('Received chat message from ' + data.sender + ': ' + data.message);
-  });
-
-  // Sending
-  $chatSendButton.on('click', sendChatMessage);
-  function sendChatMessage() {
-    socket.emit('to_server.message',
-                {
-                  sender: $chatAliasField.val(),
-                  message: $chatSendField.val()
-                });
-  };
 });
 
