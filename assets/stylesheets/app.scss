@@ -1,6 +1,9 @@
 @import 'reset';
 @import 'grid';
 
+/*spacing*/
+$spacing: 10px;
+
 /*colors*/
 $light-grey: #ddd;
 $dark-blue-green: #00202F;
@@ -33,11 +36,23 @@ input[type=button], input[type=text], textarea {
 /*chat*/
 
 #chat {
-  max-height: 290px;
-  bottom: 0px;
-}
+  position: absolute;
+  bottom: $spacing;
+  left: $spacing;
 
-/*editing*/
+  .messages-container .chat-item {
+    opacity: 0;
+    transition: opacity 1s;
+
+    .alias {
+      font-weight: bold;
+    }
+  }
+
+  .input-container {
+    display: none;
+  }
+}
 
 /*shadow land*/
 #shadow-land {

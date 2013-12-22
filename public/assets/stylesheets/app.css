@@ -114,6 +114,7 @@ img {
 .s-hidden {
   display: none; }
 
+/*spacing*/
 /*colors*/
 /*font*/
 /*everything*/
@@ -133,10 +134,17 @@ input[type=button], input[type=text], textarea {
 
 /*chat*/
 #chat {
-  max-height: 290px;
-  bottom: 0px; }
+  position: absolute;
+  bottom: 10px;
+  left: 10px; }
+  #chat .messages-container .chat-item {
+    opacity: 0;
+    transition: opacity 1s; }
+    #chat .messages-container .chat-item .alias {
+      font-weight: bold; }
+  #chat .input-container {
+    display: none; }
 
-/*editing*/
 /*shadow land*/
 #shadow-land #edit-modal {
   display: none;

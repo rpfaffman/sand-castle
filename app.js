@@ -23,12 +23,15 @@ app.get('/', function(request, response) {
 
 var io = require('socket.io').listen(app.listen(port));
 io.sockets.on('connection', function(socket) {
-  console.log('Connection established!');
 
   //chat crap
+  socket.set('alias', 'guest' + io.sockets.clients().length);
   socket.emit('to_client.message', { sender: 'server', message: 'Welcome to Sand Castle!' });
   socket.on('to_server.message', function(data) {
-    io.sockets.emit('to_client.message', data);
+    socket.get('alias', function(err, alias) {
+      data.sender = alias;
+      io.sockets.emit('to_client.message', data);
+    });
   });
 
   //edit crap
@@ -36,5 +39,16 @@ io.sockets.on('connection', function(socket) {
     io.sockets.emit('to_client.edit', data);
   });
 });
+
+var chat = io
+  .of('/chat')
+  .on('connection', function(socket) {
+    socket.set('alias', 'guest' + io.sockets.clients().length);
+    socket.emit('message', { sender: 'Server', message: 'Welcome to Sand Castle!  Press <enter> to chat with other visitors.' });
+
+    socket.on('message', function(data) {
+      socket.broadcast.emit('message', data);
+    });
+  });
 
 console.log('Sand Castle server started on port ' + port + '.');

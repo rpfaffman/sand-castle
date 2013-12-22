@@ -20,11 +20,9 @@ html
               a(href='javascript:void(0)') javascript
               br
             h3 Chat
-            #chat
             input#chat-alias-field.size1of1(type='text' placeholder='your alias')
             br
             .row
-              input#chat-send-field.unit.size4of5(type='text' placeholder='send a message')
               input#chat-send-button.unit.last-unit(type='button' value='send')
       #sandbox-container.unit.size5of6
         .inner
@@ -39,6 +37,7 @@ html
                 p And another nested paragraph
                 p and yet another nested paragraph
             p This is another paragraph
+      include partials/chat
       #shadow-land
         include partials/edit_modal
       script(id='javascript')
