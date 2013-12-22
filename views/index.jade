@@ -5,11 +5,20 @@ html
     include partials/js_manifest
     link(rel='stylesheet' type='text/css' href='assets/stylesheets/app.css');
   body
+    style(id='stylesheet' type='text/css')
     #content.row
       #controls.unit.size1of6
         .inner
           h2 Controls
           #chat-container.row
+            h3 Views
+              br
+              a(href='javascript:void(0)') html
+              br
+              a(href='javascript:void(0)') stylesheet
+              br
+              a(href='javascript:void(0)') javascript
+              br
             h3 Chat
             #chat
             input#chat-alias-field.size1of1(type='text' placeholder='your alias')
@@ -32,3 +41,4 @@ html
             p This is another paragraph
       #shadow-land
         include partials/edit_modal
+      script(id='javascript')
