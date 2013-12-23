@@ -124,7 +124,7 @@ body {
   font-family: "Trebuchet MS", Helvetica, sans-serif;
   font-size: 14px; }
 
-input[type=button], input[type=text], textarea {
+input[type=button], input[type=text], textarea, button {
   background-color: black;
   color: #00d5ff;
   border: 1px solid #00d5ff; }
@@ -146,8 +146,20 @@ input[type=button], input[type=text], textarea {
     display: none; }
 
 /*shadow land*/
-#shadow-land #edit-modal {
-  display: none;
-  position: absolute;
-  width: 200px;
-  height: 50px; }
+#shadow-land {
+  /* Need to find a better way to position and size this div. */ }
+  #shadow-land #edit-modal {
+    display: none;
+    position: absolute;
+    width: 200px;
+    height: 50px; }
+  #shadow-land .full-edit-modal-container {
+    /*display: none;*/
+    position: absolute;
+    top: 100px;
+    left: 100px; }
+    #shadow-land .full-edit-modal-container #full-edit-modal {
+      background: rgba(0, 0, 0, 0.8);
+      margin: 0 auto;
+      width: 500px;
+      height: 300px; }

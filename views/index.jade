@@ -1,29 +1,23 @@
-!!!
+doctype
 html
   head
     title Sand Castle
     include partials/js_manifest
-    link(rel='stylesheet' type='text/css' href='assets/stylesheets/app.css');
+    link(rel='stylesheet' type='text/css' href='assets/stylesheets/app.css')
   body
     style(id='stylesheet' type='text/css')
     #content.row
       #controls.unit.size1of6
         .inner
           h2 Controls
-          #chat-container.row
-            h3 Views
-              br
-              a(href='javascript:void(0)') html
-              br
-              a(href='javascript:void(0)') stylesheet
-              br
-              a(href='javascript:void(0)') javascript
-              br
-            h3 Chat
-            input#chat-alias-field.size1of1(type='text' placeholder='your alias')
-            br
-            .row
-              input#chat-send-button.unit.last-unit(type='button' value='send')
+          h3 Views
+          br
+          a(href='javascript:void(0)') html
+          br
+          a(href='javascript:void(0)') stylesheet
+          br
+          a(href='javascript:void(0)') javascript
+          br
       #sandbox-container.unit.size5of6
         .inner
           #sandbox
@@ -40,4 +34,5 @@ html
       include partials/chat
       #shadow-land
         include partials/edit_modal
+        include partials/full_edit_modal
       script(id='javascript')

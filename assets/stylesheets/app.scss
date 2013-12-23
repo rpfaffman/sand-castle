@@ -23,7 +23,7 @@ body {
   font-size: $font-size;
 }
 
-input[type=button], input[type=text], textarea {
+input[type=button], input[type=text], textarea, button {
   background-color: black;
   color: $light-blue-green;
   border: 1px solid $light-blue-green;
@@ -61,6 +61,21 @@ input[type=button], input[type=text], textarea {
     position: absolute;
     width: 200px;
     height: 50px;
+  }
+
+  /* Need to find a better way to position and size this div. */
+  .full-edit-modal-container {
+    display: none;
+    position: absolute;
+    top: 100px;
+    left: 100px;
+
+    #full-edit-modal {
+      background: rgba(0,0,0,0.8);
+      margin: 0 auto;
+      width: 500px;
+      height: 300px;
+    }
   }
 }
 

@@ -28,6 +28,31 @@ io.sockets.on('connection', function(socket) {
   });
 });
 
+var sandbox = {};
+sandbox.html = '';
+sandbox.javascript = '';
+sandbox.css = '';
+var edit = io
+  .of('/edit')
+  .on('connection', function(socket) {
+    socket.on('html', function(data) {
+      // update local variable that stores html
+      // broadcast change to everyone else
+      sandbox.html = data.html;
+      io.sockets.emit('html', data.html);
+    });
+
+    socket.on('javascript', function(data) {
+      // update local variable that stores javascript
+      // broadcast change to everyone else
+    });
+
+    socket.on('css', function(data) {
+      // update local variable that stores css
+      // broadcast change to everyone else
+    });
+  });
+
 var chat = io
   .of('/chat')
   .on('connection', function(socket) {
