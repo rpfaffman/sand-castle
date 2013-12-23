@@ -3,7 +3,7 @@ var _ = require('underscore');
 var partials = require('express-partials');
 var app = express();
 var sass = require('node-sass');
-var port = 3000;
+var port = 6000;
 
 // configuration
 app.set('views', __dirname + '/views');
@@ -17,8 +17,25 @@ app.use(sass.middleware({
   debug: true
 }));
 
+var sandbox = {};
+sandbox.html = 'some html to start with';
+sandbox.javascript = 'some javascript to start with';
+sandbox.css = 'some css to start with';
+
 app.get('/', function(request, response) {
   response.render('index');
+});
+
+app.get('/html', function(request, response) {
+  response.send(sandbox.html);
+});
+
+app.get('/javascript', function(request, response) {
+  response.send(sandbox.javascript);
+});
+
+app.get('/css', function(request, response) {
+  response.send(sandbox.css);
 });
 
 var io = require('socket.io').listen(app.listen(port));
@@ -28,28 +45,18 @@ io.sockets.on('connection', function(socket) {
   });
 });
 
-var sandbox = {};
-sandbox.html = '';
-sandbox.javascript = '';
-sandbox.css = '';
 var edit = io
   .of('/edit')
   .on('connection', function(socket) {
-    socket.on('html', function(data) {
-      // update local variable that stores html
-      // broadcast change to everyone else
-      sandbox.html = data.html;
-      io.sockets.emit('html', data.html);
+    edit.emit('edit submit', { type: 'html', text: sandbox['html'] });
+
+    socket.on('edit submit', function(data) {
+      sandbox[data.type] = data.text;
+      edit.emit('edit submit', data);
     });
 
-    socket.on('javascript', function(data) {
-      // update local variable that stores javascript
-      // broadcast change to everyone else
-    });
-
-    socket.on('css', function(data) {
-      // update local variable that stores css
-      // broadcast change to everyone else
+    socket.on('edit sync', function(data) {
+      socket.broadcast.emit(data.type + ' edit', data);
     });
   });
 
@@ -69,7 +76,6 @@ var chat = io
 
     // changing usernames/aliases
     socket.on('alias', function(data) {
-      console.log('alias change sent with ' + data);
       socket.set('alias', data.args.join(' '));
       socket.emit('message', { sender: 'Server', message: 'Alias successfully changed.' });
     });

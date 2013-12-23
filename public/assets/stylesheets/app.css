@@ -153,12 +153,12 @@ input[type=button], input[type=text], textarea, button {
     position: absolute;
     width: 200px;
     height: 50px; }
-  #shadow-land .full-edit-modal-container {
-    /*display: none;*/
+  #shadow-land #full-edit-modal {
+    display: none;
     position: absolute;
     top: 100px;
     left: 100px; }
-    #shadow-land .full-edit-modal-container #full-edit-modal {
+    #shadow-land #full-edit-modal .edit-text {
       background: rgba(0, 0, 0, 0.8);
       margin: 0 auto;
       width: 500px;

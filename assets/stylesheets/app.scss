@@ -64,13 +64,13 @@ input[type=button], input[type=text], textarea, button {
   }
 
   /* Need to find a better way to position and size this div. */
-  .full-edit-modal-container {
+  #full-edit-modal {
     display: none;
     position: absolute;
     top: 100px;
     left: 100px;
 
-    #full-edit-modal {
+    .edit-text {
       background: rgba(0,0,0,0.8);
       margin: 0 auto;
       width: 500px;

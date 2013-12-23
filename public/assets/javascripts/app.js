@@ -1,9 +1,9 @@
 $(document).ready(function() {
-  var socket = io.connect(window.location.protocol + '//' + window.location.host);
+  var editSocket = io.connect(window.location.protocol + '//' + window.location.host + '/edit');
   var chatSocket = io.connect(window.location.protocol + '//' + window.location.host + '/chat');
 
   // Initialize the Editor
-  Editor.Config.socket = socket;
+  Editor.Config.socket = editSocket;
   new Editor.Receiver();
   new Editor.Modal(new Editor.Sender());
 
@@ -28,6 +28,5 @@ $(document).ready(function() {
         break;
     }
   });
-
 });
 
