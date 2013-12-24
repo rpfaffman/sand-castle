@@ -20,14 +20,24 @@ $editor-height: $spacing * 15;
     bottom: 0px;
 
     .selector-item {
+      cursor: pointer;
       display: inline-block;
-      opacity: 0.5;
+      opacity: 0.3;
       transition: opacity 0.5s;
       font-weight: 200;
+
+      &.open {
+        opacity: 0.7;
+
+        &:hover {
+          opacity: 1;
+        }
+      }
 
       &:hover {
         opacity: 1;
       }
+
     }
   }
 
@@ -58,10 +68,16 @@ $editor-height: $spacing * 15;
   background-color: #002b36;
   overflow: hidden;
   height: 300px;
-  transition: all 1s;
+  transition: height 1s;
+
+  .closed {
+    width: 0%;
+  }
 
   > div {
     height: 100%;
+    transition: width 1s;
+
   }
 }
 

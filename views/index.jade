@@ -7,19 +7,21 @@ html
     link(rel='stylesheet' type='text/css' href='assets/vendor/stylesheets/codemirror.css')
     link(rel='stylesheet' type='text/css' href='assets/vendor/stylesheets/codemirror-solarized-theme.css')
   body
-    #edit-field
+    #content
     #editor-container.row
       #toolbar.row
         include partials/chat
         #editor-selector.unit.last-unit
-          h3.selector-item html
+          h3.selector-item toggle:
           .spacer
-          h3.selector-item css
           .spacer
-          h3.selector-item javascript
-      #editor
+          h2#html-switch.selector-item.open html
+          .spacer
+          h2#css-switch.selector-item.open css
+          .spacer
+          h2#javascript-switch.selector-item.open javascript
+      #editor.row
+        #htmlEditField.open.unit.size1of3
+        #cssEditField.open.unit.size1of3
+        #javascriptEditField.open.unit.size1of3
     .shadow-land
-      textarea#htmlEditField
-      textarea#cssEditField
-      textarea#javascriptEditField
-        | function test() { console.log('just a test'); }

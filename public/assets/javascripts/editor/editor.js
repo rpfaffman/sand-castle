@@ -9,6 +9,12 @@ Editor.Config = {
   fullModalSelector: '#full-edit-modal',
   submitSelector: '#edit-send-button',
   textFieldSelector: '#edit-send-field',
+
+  //interface
+  editorSelector: '#editor',
+  htmlEditSelector: '#htmlEditField',
+  cssEditSelector: '#cssEditField',
+  javascriptEditSelector: '#javascriptEditField',
   htmlSelector: '#sandbox',
   javascriptSelector: '#javascript',
   cssSelector: '#stylesheet'

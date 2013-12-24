@@ -17,31 +17,28 @@ $(document).ready(function() {
   var chatSender = new Chat.Sender();
 
   //Initializing CodeMirror
-  var editorEl = $("#editor")[0];
-  var $javascriptEditField = $("#javascriptEditField");
-  var javascriptMirror = CodeMirror(editorEl, {
-    value: $javascriptEditField.html(),
+  var htmlMirror = CodeMirror($(Editor.Config.htmlEditSelector)[0], {
+    value: '<html>some stupid html</html>',
+    mode: 'text/html',
+    theme: 'solarized-dark'
+  });
+
+  var cssMirror = CodeMirror($(Editor.Config.cssEditSelector)[0], {
+    value: '.css { width: 100%; }',
+    mode: 'css',
+    theme: 'solarized-dark'
+  });
+
+  var javascriptMirror = CodeMirror($(Editor.Config.javascriptEditSelector)[0], {
+    value: 'function() { console.log("check me out"); }',
     mode: 'javascript',
     theme: 'solarized-dark'
   });
-  //var cssEditEl = $('body #content')[0];
-  //var cssMirror = CodeMirror(cssEditEl, {
-    //value: '.some-css { width: 50px; height: 100px; }',
-    //mode: 'css',
-    //theme: 'solarized-dark'
-  //});
-  //var htmlEditEl = $('body #content')[0];
-  //var htmlmixedMirror = CodeMirror(htmlEditEl, {
-    //value: '<html><head><title>This is a test</title></head><body><p>This is a paragraph</p></body></html>',
-    //mode: 'xml',
-    //htmlMode: true,
-    //theme: 'solarized-dark'
-  //});
 
   //Initializing Editor Interface
   var editorInterface = new Editor.Interface();
 
-  $(document).keypress(function(e) {
+  $('#content').keypress(function(e) {
     switch(e.keyCode) {
       case 13: // enter for messages
         e.preventDefault();
