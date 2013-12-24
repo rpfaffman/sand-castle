@@ -3,7 +3,7 @@ var _ = require('underscore');
 var partials = require('express-partials');
 var app = express();
 var sass = require('node-sass');
-var port = 6000;
+var port = 3000;
 
 // configuration
 app.set('views', __dirname + '/views');

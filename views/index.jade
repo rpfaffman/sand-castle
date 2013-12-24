@@ -4,35 +4,22 @@ html
     title Sand Castle
     include partials/js_manifest
     link(rel='stylesheet' type='text/css' href='assets/stylesheets/app.css')
+    link(rel='stylesheet' type='text/css' href='assets/vendor/stylesheets/codemirror.css')
+    link(rel='stylesheet' type='text/css' href='assets/vendor/stylesheets/codemirror-solarized-theme.css')
   body
-    style(id='stylesheet' type='text/css')
-    #content.row
-      #controls.unit.size1of6
-        .inner
-          h2 Controls
-          h3 Views
-          br
-          a(href='javascript:void(0)') html
-          br
-          a(href='javascript:void(0)') stylesheet
-          br
-          a(href='javascript:void(0)') javascript
-          br
-      #sandbox-container.unit.size5of6
-        .inner
-          #sandbox
-            p Click me to start editing!
-            p This is another paragraph
-            .random
-              | This is a random div.
-              p This is a paragraph in the random div
-              .random-nested
-                p This is a nested paragraph
-                p And another nested paragraph
-                p and yet another nested paragraph
-            p This is another paragraph
-      include partials/chat
-      #shadow-land
-        include partials/edit_modal
-        include partials/full_edit_modal
-      script(id='javascript')
+    #edit-field
+    #editor-container.row
+      #toolbar.row
+        include partials/chat
+        #editor-selector.unit.last-unit
+          h3.selector-item html
+          .spacer
+          h3.selector-item css
+          .spacer
+          h3.selector-item javascript
+      #editor
+    .shadow-land
+      textarea#htmlEditField
+      textarea#cssEditField
+      textarea#javascriptEditField
+        | function test() { console.log('just a test'); }

@@ -114,52 +114,50 @@ img {
 .s-hidden {
   display: none; }
 
-/*spacing*/
-/*colors*/
-/*font*/
-/*everything*/
-body {
-  background-color: #00202f;
-  color: #00d5ff;
-  font-family: "Trebuchet MS", Helvetica, sans-serif;
-  font-size: 14px; }
-
-input[type=button], input[type=text], textarea, button {
-  background-color: black;
-  color: #00d5ff;
-  border: 1px solid #00d5ff; }
-
-#controls {
-  text-align: right; }
-
-/*chat*/
-#chat {
+/*content*/
+#editor-container {
   position: absolute;
-  bottom: 10px;
-  left: 10px; }
-  #chat .messages-container .chat-item {
-    opacity: 0;
-    transition: opacity 1s; }
-    #chat .messages-container .chat-item .alias {
-      font-weight: bold; }
-  #chat .input-container {
-    display: none; }
+  bottom: 0px; }
 
-/*shadow land*/
-#shadow-land {
-  /* Need to find a better way to position and size this div. */ }
-  #shadow-land #edit-modal {
-    display: none;
+#toolbar {
+  position: relative;
+  /*top: $spacing * -2.5;*/ }
+  #toolbar #editor-selector {
     position: absolute;
-    width: 200px;
-    height: 50px; }
-  #shadow-land #full-edit-modal {
-    display: none;
+    right: 10px;
+    bottom: 0px; }
+    #toolbar #editor-selector .selector-item {
+      display: inline-block;
+      opacity: 0.5;
+      transition: opacity 0.5s;
+      font-weight: 200; }
+      #toolbar #editor-selector .selector-item:hover {
+        opacity: 1; }
+  #toolbar #chat {
     position: absolute;
-    top: 100px;
-    left: 100px; }
-    #shadow-land #full-edit-modal .edit-text {
-      background: rgba(0, 0, 0, 0.8);
-      margin: 0 auto;
-      width: 500px;
-      height: 300px; }
+    left: 10px;
+    bottom: 0px; }
+    #toolbar #chat .messages-container .chat-item {
+      opacity: 0;
+      transition: opacity 1s; }
+      #toolbar #chat .messages-container .chat-item .alias {
+        font-weight: bold; }
+    #toolbar #chat .input-container {
+      display: none; }
+
+/*editor*/
+#editor {
+  padding: 10px;
+  background-color: #002b36;
+  overflow: hidden;
+  height: 300px;
+  transition: all 1s; }
+  #editor > div {
+    height: 100%; }
+
+.spacer {
+  display: inline-block;
+  width: 10px; }
+
+.shadow-land {
+  display: none; }

@@ -16,6 +16,31 @@ $(document).ready(function() {
   } );
   var chatSender = new Chat.Sender();
 
+  //Initializing CodeMirror
+  var editorEl = $("#editor")[0];
+  var $javascriptEditField = $("#javascriptEditField");
+  var javascriptMirror = CodeMirror(editorEl, {
+    value: $javascriptEditField.html(),
+    mode: 'javascript',
+    theme: 'solarized-dark'
+  });
+  //var cssEditEl = $('body #content')[0];
+  //var cssMirror = CodeMirror(cssEditEl, {
+    //value: '.some-css { width: 50px; height: 100px; }',
+    //mode: 'css',
+    //theme: 'solarized-dark'
+  //});
+  //var htmlEditEl = $('body #content')[0];
+  //var htmlmixedMirror = CodeMirror(htmlEditEl, {
+    //value: '<html><head><title>This is a test</title></head><body><p>This is a paragraph</p></body></html>',
+    //mode: 'xml',
+    //htmlMode: true,
+    //theme: 'solarized-dark'
+  //});
+
+  //Initializing Editor Interface
+  var editorInterface = new Editor.Interface();
+
   $(document).keypress(function(e) {
     switch(e.keyCode) {
       case 13: // enter for messages

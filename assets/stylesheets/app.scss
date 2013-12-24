@@ -1,81 +1,76 @@
 @import 'reset';
 @import 'grid';
 
-/*spacing*/
 $spacing: 10px;
+$editor-height: $spacing * 15;
 
-/*colors*/
-$light-grey: #ddd;
-$dark-blue-green: #00202F;
-$light-blue-green: #00D5FF;
-$light-green-blue: #00FFAD;
+/*content*/
 
-/*font*/
-$font-size: 14px;
-$font-family: "Trebuchet MS", Helvetica, sans-serif;
-$font-color: $light-blue-green;
-
-/*everything*/
-body {
-  background-color: $dark-blue-green;
-  color: $font-color;
-  font-family: $font-family;
-  font-size: $font-size;
-}
-
-input[type=button], input[type=text], textarea, button {
-  background-color: black;
-  color: $light-blue-green;
-  border: 1px solid $light-blue-green;
-}
-
-#controls {
-  text-align: right;
-}
-
-/*chat*/
-
-#chat {
+#editor-container {
   position: absolute;
-  bottom: $spacing;
-  left: $spacing;
+  bottom: 0px;
+}
 
-  .messages-container .chat-item {
-    opacity: 0;
-    transition: opacity 1s;
+#toolbar {
+  position:relative;
 
-    .alias {
-      font-weight: bold;
+  #editor-selector {
+    position: absolute;
+    right: $spacing;
+    bottom: 0px;
+
+    .selector-item {
+      display: inline-block;
+      opacity: 0.5;
+      transition: opacity 0.5s;
+      font-weight: 200;
+
+      &:hover {
+        opacity: 1;
+      }
     }
   }
 
-  .input-container {
-    display: none;
+  #chat {
+    position: absolute;
+    left: $spacing;
+    bottom: 0px;
+
+    .messages-container .chat-item {
+      opacity: 0;
+      transition: opacity 1s;
+
+      .alias {
+        font-weight: bold;
+      }
+    }
+
+    .input-container {
+      display: none;
+    }
   }
 }
 
-/*shadow land*/
-#shadow-land {
-  #edit-modal {
-    display: none;
-    position: absolute;
-    width: 200px;
-    height: 50px;
-  }
+/*editor*/
 
-  /* Need to find a better way to position and size this div. */
-  #full-edit-modal {
-    display: none;
-    position: absolute;
-    top: 100px;
-    left: 100px;
+#editor {
+  padding: $spacing;
+  background-color: #002b36;
+  overflow: hidden;
+  height: 300px;
+  transition: all 1s;
 
-    .edit-text {
-      background: rgba(0,0,0,0.8);
-      margin: 0 auto;
-      width: 500px;
-      height: 300px;
-    }
+  > div {
+    height: 100%;
   }
+}
+
+.spacer {
+  display: inline-block;
+  width: $spacing;
+}
+
+.shadow-land {
+  display: none;
 }
 
