@@ -20,7 +20,10 @@ $(document).ready(function() {
   var htmlMirror = CodeMirror($(Editor.Config.htmlEditSelector)[0], {
     value: '<html>some stupid html</html>',
     mode: 'text/html',
-    theme: 'solarized-dark'
+    theme: 'solarized-dark',
+    onChange: function(from, to, text, next) {
+      console.log('check me out, bra');
+    }
   });
 
   var cssMirror = CodeMirror($(Editor.Config.cssEditSelector)[0], {
