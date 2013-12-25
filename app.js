@@ -22,21 +22,13 @@ sandbox.html = 'some html to start with';
 sandbox.javascript = 'some javascript to start with';
 sandbox.css = 'some css to start with';
 
-app.get('/', function(request, response) {
-  response.render('index');
-});
+app.get('/', function(request, response) { response.render('index'); });
 
-app.get('/html', function(request, response) {
-  response.send(sandbox.html);
-});
+app.get('/html', function(request, response) { response.send(sandbox.html); });
 
-app.get('/javascript', function(request, response) {
-  response.send(sandbox.javascript);
-});
+app.get('/javascript', function(request, response) { response.send(sandbox.javascript); });
 
-app.get('/css', function(request, response) {
-  response.send(sandbox.css);
-});
+app.get('/css', function(request, response) { response.send(sandbox.css); });
 
 var io = require('socket.io').listen(app.listen(port));
 io.sockets.on('connection', function(socket) {
@@ -58,6 +50,9 @@ var edit = io
     socket.on('edit sync', function(data) {
       socket.broadcast.emit(data.type + ' edit', data);
     });
+
+    // new
+    socket.on('code edit', function(data) { socket.broadcast.emit('code edit', data); });
   });
 
 var chat = io

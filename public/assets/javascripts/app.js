@@ -11,19 +11,14 @@ $(document).ready(function() {
   Chat.Config.socket = chatSocket;
   var chatInterface = new Chat.Interface();
   var chatReceiver = new Chat.Receiver();
-  chatReceiver.listen(function(data) {
-    chatInterface.renderChatItem(data.sender, data.message);
-  } );
+  chatReceiver.listen(function(data) { chatInterface.renderChatItem(data.sender, data.message); } );
   var chatSender = new Chat.Sender();
 
   //Initializing CodeMirror
   var htmlMirror = CodeMirror($(Editor.Config.htmlEditSelector)[0], {
     value: '<html>some stupid html</html>',
     mode: 'text/html',
-    theme: 'solarized-dark',
-    onChange: function(from, to, text, next) {
-      console.log('check me out, bra');
-    }
+    theme: 'solarized-dark'
   });
 
   var cssMirror = CodeMirror($(Editor.Config.cssEditSelector)[0], {
@@ -40,6 +35,11 @@ $(document).ready(function() {
 
   //Initializing Editor Interface
   var editorInterface = new Editor.Interface();
+  var editorStreamer = new Editor.Interface.Streamer({
+    htmlMirror: htmlMirror,
+    cssMirror: cssMirror,
+    javascriptMirror: javascriptMirror
+  });
 
   $('#content').keypress(function(e) {
     switch(e.keyCode) {
