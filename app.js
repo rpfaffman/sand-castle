@@ -18,40 +18,26 @@ app.use(sass.middleware({
 }));
 
 var sandbox = {};
-sandbox.html = 'some html to start with';
-sandbox.javascript = 'some javascript to start with';
-sandbox.css = 'some css to start with';
+sandbox.html = '';
+sandbox.javascript = '';
+sandbox.css = '';
 
-app.get('/', function(request, response) { response.render('index'); });
-
-app.get('/html', function(request, response) { response.send(sandbox.html); });
-
-app.get('/javascript', function(request, response) { response.send(sandbox.javascript); });
-
-app.get('/css', function(request, response) { response.send(sandbox.css); });
+app.get('/', function(request, response) {
+  response.render('index');
+});
 
 var io = require('socket.io').listen(app.listen(port));
-io.sockets.on('connection', function(socket) {
-  socket.on('to_server.edit', function(data) {
-    io.sockets.emit('to_client.edit', data);
-  });
-});
 
 var edit = io
   .of('/edit')
   .on('connection', function(socket) {
-    edit.emit('edit submit', { type: 'html', text: sandbox['html'] });
+    edit.emit('edit submit', { type: 'html', code: sandbox['html'] });
 
-    socket.on('edit submit', function(data) {
-      sandbox[data.type] = data.text;
-      edit.emit('edit submit', data);
+    socket.on('code submit', function(data) {
+      sandbox[data.type] = data.code;
+      edit.emit('code submit', data);
     });
 
-    socket.on('edit sync', function(data) {
-      socket.broadcast.emit(data.type + ' edit', data);
-    });
-
-    // new
     socket.on('code edit', function(data) { socket.broadcast.emit('code edit', data); });
   });
 

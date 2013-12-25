@@ -15,8 +15,9 @@ Editor.Receiver = function(socket) {
       $(data.targetSelector)[0].outerHTML = data.html;
     });
 
-    socket.on('edit submit', function(data) {
-      $sandbox[data.type].html(data.text);
+    socket.on('code submit', function(data) {
+      console.log('submitted code received');
+      $sandbox[data.type].html(data.code);
     });
   };
 

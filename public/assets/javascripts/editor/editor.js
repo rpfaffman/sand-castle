@@ -15,7 +15,7 @@ Editor.Config = {
   htmlEditSelector: '#htmlEditField',
   cssEditSelector: '#cssEditField',
   javascriptEditSelector: '#javascriptEditField',
-  htmlSelector: '#sandbox',
+  htmlSelector: '#content',
   javascriptSelector: '#javascript',
   cssSelector: '#stylesheet'
 };

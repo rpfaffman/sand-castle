@@ -18,28 +18,39 @@ $(document).ready(function() {
   var htmlMirror = CodeMirror($(Editor.Config.htmlEditSelector)[0], {
     value: '<html>some stupid html</html>',
     mode: 'text/html',
-    theme: 'solarized-dark'
+    theme: 'solarized-dark',
+    extraKeys: { "Shift-Enter": function() {
+      Editor.Config.socket.emit('code submit', { type: 'html', code: htmlMirror.getValue() });
+    }}
   });
 
   var cssMirror = CodeMirror($(Editor.Config.cssEditSelector)[0], {
     value: '.css { width: 100%; }',
     mode: 'css',
-    theme: 'solarized-dark'
+    theme: 'solarized-dark',
+    extraKeys: { "Shift-Enter": function() {
+      Editor.Config.socket.emit('code submit', { type: 'css', code: cssMirror.getValue() });
+    }}
   });
 
   var javascriptMirror = CodeMirror($(Editor.Config.javascriptEditSelector)[0], {
     value: 'function() { console.log("check me out"); }',
     mode: 'javascript',
-    theme: 'solarized-dark'
+    theme: 'solarized-dark',
+    extraKeys: { "Shift-Enter": function() {
+      Editor.Config.socket.emit('code submit', { type: 'javascript', code: javascriptMirror.getValue() });
+    }}
   });
 
   //Initializing Editor Interface
-  var editorInterface = new Editor.Interface();
-  var editorStreamer = new Editor.Interface.Streamer({
+  var mirrors = {
     htmlMirror: htmlMirror,
     cssMirror: cssMirror,
     javascriptMirror: javascriptMirror
-  });
+  };
+  var editorInterface = new Editor.Interface(mirrors);
+  var editorStreamer = new Editor.Interface.Streamer(mirrors);
+  var editorSubmitter = new Editor.Interface.Submitter(mirrors);
 
   $('#content').keypress(function(e) {
     switch(e.keyCode) {
