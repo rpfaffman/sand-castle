@@ -3,14 +3,10 @@
 var Editor = {};
 
 Editor.Config = {
-  socket: 'assign me',
-  editorContainerSelector: '#editorContainer',
-  editDivSelector: '#sandbox',
-  modalSelector: '#edit-modal',
-  submitSelector: '#edit-send-button',
-  textFieldSelector: '#edit-send-field',
+  socket: io.connect(window.location.protocol + '//' + window.location.host + '/edit'),
 
   //interface
+  editorContainerSelector: '#editor-container',
   htmlEditSelector: '#htmlEditField',
   cssEditSelector: '#cssEditField',
   javascriptEditSelector: '#javascriptEditField',

@@ -1,5 +1,6 @@
 Editor.Interface = function() {
-  var $editor = $('#editor');
+  var $editorContainer = $(Editor.Config.editorContainerSelector);
+  var $editor = $editorContainer.find('#editor');
   var editorHeight = 300;
 
   this.init = function() {
@@ -17,7 +18,9 @@ Editor.Interface = function() {
 
   // private methods
 
-  var openEditor = function() { setHeight(editorHeight); };
+  var openEditor = function() {
+    setHeight(editorHeight);
+  };
 
   var closeEditor = function() { setHeight(0); };
 
@@ -28,6 +31,7 @@ Editor.Interface = function() {
   };
 
   var closePane = function($pane) {
+    console.log('closePane called');
     removePaneSizing();
     $pane.removeClass('open').addClass('closed');
     resizePanes();
@@ -51,9 +55,12 @@ Editor.Interface = function() {
   var setHeight = function(height) { $editor.css('height', height + 'px'); };
 
   var bindEvents = function() {
-    $(".selector-item").click(function(e) { this.togglePane(e.target.innerHTML); }.bind(this));
-    $('#editor, #toolbar').hover(openEditor, closeEditor);
+    $editorContainer.find(".selector-item").click(function(e) { this.togglePane(e.target.innerHTML); }.bind(this));
+    $editor.keypress(preventKeyPropagation);
+    $editorContainer.hover(openEditor, closeEditor);
   }.bind(this);
+
+  var preventKeyPropagation = function(e) { e.stopPropagation(); };
 
   // stupid CodeMirror doesn't allow you to do this in stylesheets
   var hideScrollbars = function() { $('.CodeMirror-vscrollbar, .CodeMirror-hscrollbar').hide(); };

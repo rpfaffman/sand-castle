@@ -3,8 +3,7 @@
 var Chat = {};
 
 Chat.Config = {
-  socket: 'assign me',
+  socket: io.connect(window.location.protocol + '//' + window.location.host + '/chat'),
   chatDivSelector: '#chat',
-  chatTextSelector: '#chat-send-field',
-  submitSelector: '#chat-send-button'
+  chatTextSelector: '#chat-send-field'
 };
