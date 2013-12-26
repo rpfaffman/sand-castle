@@ -1,4 +1,4 @@
-Editor.Interface = function() {
+Editor.Interface = function(mirrors) {
   var $editorContainer = $(Editor.Config.editorContainerSelector);
   var $editor = $editorContainer.find('#editor');
   var editorHeight = 300;
@@ -14,6 +14,10 @@ Editor.Interface = function() {
     var $pane = $editor.find('#' + pane + 'EditField');
     ($pane.width() === 0) ? openPane($pane) : closePane($pane);
     toggleSwitch(pane);
+  };
+
+  this.refreshMirrors = function() {
+    _.each(mirrors, function(mirror) { mirror.refresh() });
   };
 
   // private methods

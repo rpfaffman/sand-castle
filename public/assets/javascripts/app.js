@@ -13,6 +13,8 @@ $(document).ready(function() {
     value: '<h1>Try</h1>\n<h2>editing</h2>\n<h3>this</h3>\n<h4>html</h4>',
     mode: { name: 'xml', alignCDATA: true },
     theme: 'solarized-dark',
+    lineNumbers: true,
+    lineWrapping: true,
     extraKeys: { "Shift-Enter": function() {
       Editor.Config.socket.emit('code submit', { type: 'html', code: htmlMirror.getValue() });
     }}
@@ -22,6 +24,8 @@ $(document).ready(function() {
     value: '#content { text-align: center; }',
     mode: 'css',
     theme: 'solarized-dark',
+    lineNumbers: true,
+    lineWrapping: true,
     extraKeys: { "Shift-Enter": function() {
       Editor.Config.socket.emit('code submit', { type: 'css', code: cssMirror.getValue() });
     }}
@@ -31,6 +35,8 @@ $(document).ready(function() {
     value: 'function someFunction() { alert("boom") };',
     mode: 'javascript',
     theme: 'solarized-dark',
+    lineNumbers: true,
+    lineWrapping: true,
     extraKeys: { "Shift-Enter": function() {
       Editor.Config.socket.emit('code submit', { type: 'javascript', code: javascriptMirror.getValue() });
     }}
@@ -45,7 +51,13 @@ $(document).ready(function() {
   var editorInterface = new Editor.Interface(mirrors);
   var editorStreamer = new Editor.Interface.Streamer(mirrors);
 
+  //problem with gutter sizing when there is no timeout.  need to move this into editorfields object.
+  setTimeout(function() {
+    _.each(mirrors, function(mirror) { mirror.refresh() });
+  }, 100);
+
   $(document).keypress(function(e) {
+    editorInterface.refreshMirrors();
     switch(e.keyCode) {
       case 13: // enter for messages
         e.preventDefault();
