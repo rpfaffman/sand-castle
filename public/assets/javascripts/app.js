@@ -27,7 +27,6 @@ $(document).ready(function() {
   }, 100);
 
   $(document).keypress(function(e) {
-    editorInterface.refreshMirrors();
     switch(e.keyCode) {
       case 13: // enter for messages
         e.preventDefault();

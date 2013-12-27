@@ -3,19 +3,17 @@ Editor.Interface.Toggler = function() {
   var $editor = $editorContainer.find('#editor');
   var editorHeight = 300;
 
-  this.toggleEditor = function() { ($editor.height() === 0) ? openEditor() : closeEditor(); };
-
   this.togglePane = function(pane) {
     var $pane = $editor.find('#' + pane + 'EditField');
     ($pane.width() === 0) ? openPane($pane) : closePane($pane);
     toggleSwitch(pane);
   };
 
+  this.openEditor = function() { setHeight(editorHeight); };
+
+  this.closeEditor = function() { setHeight(0); };
+
   // private methods
-
-  var openEditor = function() { setHeight(editorHeight); };
-
-  var closeEditor = function() { setHeight(0); };
 
   var openPane = function($pane) {
     removePaneSizing();
@@ -24,7 +22,6 @@ Editor.Interface.Toggler = function() {
   };
 
   var closePane = function($pane) {
-    console.log('closePane called');
     removePaneSizing();
     $pane.removeClass('open').addClass('closed');
     resizePanes();
