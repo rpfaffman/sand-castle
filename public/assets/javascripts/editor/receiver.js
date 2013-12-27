@@ -1,4 +1,4 @@
-Editor.Receiver = function(socket) {
+Editor.Receiver = function() {
   var socket = Editor.Config.socket;
   var $sandbox = {
     html: $(Editor.Config.htmlSelector),

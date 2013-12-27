@@ -1,12 +1,7 @@
-Editor.Interface = function(mirrors) {
+Editor.Interface.Toggler = function() {
   var $editorContainer = $(Editor.Config.editorContainerSelector);
   var $editor = $editorContainer.find('#editor');
   var editorHeight = 300;
-
-  this.init = function() {
-    bindEvents();
-    hideScrollbars();
-  };
 
   this.toggleEditor = function() { ($editor.height() === 0) ? openEditor() : closeEditor(); };
 
@@ -14,10 +9,6 @@ Editor.Interface = function(mirrors) {
     var $pane = $editor.find('#' + pane + 'EditField');
     ($pane.width() === 0) ? openPane($pane) : closePane($pane);
     toggleSwitch(pane);
-  };
-
-  this.refreshMirrors = function() {
-    _.each(mirrors, function(mirror) { mirror.refresh() });
   };
 
   // private methods
@@ -55,17 +46,4 @@ Editor.Interface = function(mirrors) {
   };
 
   var setHeight = function(height) { $editor.css('height', height + 'px'); };
-
-  var bindEvents = function() {
-    $editorContainer.find(".selector-item").click(function(e) { this.togglePane(e.target.innerHTML); }.bind(this));
-    $editor.keypress(preventKeyPropagation);
-    $editorContainer.hover(openEditor, closeEditor);
-  }.bind(this);
-
-  var preventKeyPropagation = function(e) { e.stopPropagation(); };
-
-  // stupid CodeMirror doesn't allow you to do this in stylesheets
-  var hideScrollbars = function() { $('.CodeMirror-vscrollbar, .CodeMirror-hscrollbar').hide(); };
-
-  this.init();
 };

@@ -8,39 +8,9 @@ $(document).ready(function() {
   chatReceiver.listen(function(data) { chatInterface.renderChatItem(data.sender, data.message); } );
   var chatSender = new Chat.Sender();
 
-  //Initializing CodeMirror
-  var htmlMirror = CodeMirror($(Editor.Config.htmlEditSelector)[0], {
-    value: '<h1>Try</h1>\n<h2>editing</h2>\n<h3>this</h3>\n<h4>html</h4>',
-    mode: { name: 'xml', alignCDATA: true },
-    theme: 'solarized-dark',
-    lineNumbers: true,
-    lineWrapping: true,
-    extraKeys: { "Shift-Enter": function() {
-      Editor.Config.socket.emit('code submit', { type: 'html', code: htmlMirror.getValue() });
-    }}
-  });
-
-  var cssMirror = CodeMirror($(Editor.Config.cssEditSelector)[0], {
-    value: '#content { text-align: center; }',
-    mode: 'css',
-    theme: 'solarized-dark',
-    lineNumbers: true,
-    lineWrapping: true,
-    extraKeys: { "Shift-Enter": function() {
-      Editor.Config.socket.emit('code submit', { type: 'css', code: cssMirror.getValue() });
-    }}
-  });
-
-  var javascriptMirror = CodeMirror($(Editor.Config.javascriptEditSelector)[0], {
-    value: 'function someFunction() { alert("boom") };',
-    mode: 'javascript',
-    theme: 'solarized-dark',
-    lineNumbers: true,
-    lineWrapping: true,
-    extraKeys: { "Shift-Enter": function() {
-      Editor.Config.socket.emit('code submit', { type: 'javascript', code: javascriptMirror.getValue() });
-    }}
-  });
+  var htmlMirror = new Editor.Interface.EditField.Html().field;
+  var cssMirror = new Editor.Interface.EditField.Css().field;
+  var javascriptMirror = new Editor.Interface.EditField.Javascript().field;
 
   //Initializing Editor Interface
   var mirrors = {
