@@ -6,6 +6,7 @@ Editor.Interface = function(mirrors) {
   this.init = function() {
     bindEvents();
     hideScrollbars();
+    spawnEditFields();
   };
 
   this.refreshMirrors = function() {
@@ -24,6 +25,10 @@ Editor.Interface = function(mirrors) {
 
   // stupid CodeMirror doesn't allow you to do this in stylesheets
   var hideScrollbars = function() { $('.CodeMirror-vscrollbar, .CodeMirror-hscrollbar').hide(); };
+
+  var spawnEditFields = function() {
+
+  };
 
   this.init();
 };

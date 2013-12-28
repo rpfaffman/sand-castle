@@ -15,3 +15,14 @@ Editor.Config = {
   cssSelector: '#stylesheet'
 };
 
+Editor.initialize = function() {
+  var mirrors = {
+    htmlMirror: new Editor.Interface.EditField.Html().field,
+    cssMirror: new Editor.Interface.EditField.Css().field,
+    javascriptMirror: new Editor.Interface.EditField.Javascript().field
+  };
+  new Editor.Interface(mirrors);
+  new Editor.Interface.Streamer(mirrors);
+  new Editor.Receiver();
+};
+

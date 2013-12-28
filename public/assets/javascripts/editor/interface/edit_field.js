@@ -10,11 +10,16 @@ Editor.Interface.EditField = function(args) {
     var fieldEl = $(this.fieldSelector)[0];
     this.field = CodeMirror(fieldEl, _.extend(defaultOptions, { mode: this.mode, value: this.value } ));
     this.field.setOption('extraKeys', { 'Shift-Enter': this.submitCode.bind(this) });
+    setTimeout(refreshField.bind(this), 100); // problem with gutter sizing without refresh
   };
 
   this.submitCode = function() {
     socket.emit('code submit', { type: this.type, code: this.field.getValue() });
   };
+
+  // private methods
+
+  var refreshField = function() { this.field.refresh(); };
 };
 
 // Subclass of Editor.Interface.EditField

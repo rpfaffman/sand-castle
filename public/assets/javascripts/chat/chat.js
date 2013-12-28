@@ -7,3 +7,9 @@ Chat.Config = {
   chatDivSelector: '#chat',
   chatTextSelector: '#chat-send-field'
 };
+
+Chat.initialize = function() {
+  var chatInterface = new Chat.Interface();
+  var chatReceiver = new Chat.Receiver();
+  chatReceiver.listen(function(data) { chatInterface.renderChatItem(data.sender, data.message); } );
+};

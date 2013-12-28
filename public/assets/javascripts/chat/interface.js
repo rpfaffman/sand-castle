@@ -5,8 +5,13 @@ Chat.Interface = function() {
   var $inputContainer = $chat.find('.input-container');
   var $inputPrompt = $chat.find('#chat-prompt');
   var $input = $(Chat.Config.chatTextSelector);
+  var sender = new Chat.Sender();
 
   var chatTimeout;
+
+  this.init = function() {
+    bindEvents();
+  };
 
   this.renderChatItem = function(alias, message) {
     var $chatItem = $('<div class="container"><div class="chat-item"><span class="alias">' + alias + ':</span> <span class="message">' + message + '</span></div></div>').hide();
@@ -19,7 +24,24 @@ Chat.Interface = function() {
     });
   };
 
-  this.renderInputBox = function(args) {
+  // private methods
+
+  var bindEvents = function() {
+    $(document).keypress(function(e) {
+      switch(e.keyCode) {
+        case 13: // enter for messages
+          e.preventDefault();
+          renderInputBox({ prompt: 'message', callback: sender.sendMessage });
+          break;
+        case 47: // '/' - forwardslash for commands (alias)
+          e.preventDefault();
+          renderInputBox({ prompt: 'command', callback: sender.sendCommand });
+          break;
+      }
+    });
+  };
+
+  var renderInputBox = function(args) {
     var prompt = args.prompt;
     var callback = args.callback;
     $inputPrompt.html(prompt);
@@ -28,8 +50,6 @@ Chat.Interface = function() {
     });
     $input.keypress(function(e) { onEnter(e, callback); });
   };
-
-  // private methods
 
   var closeChat = function() {
     $messagesContainer.fadeOut(2000, function() {
@@ -51,4 +71,6 @@ Chat.Interface = function() {
     $input.html('');
     $input.blur();
   };
+
+  this.init();
 };
