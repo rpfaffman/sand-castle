@@ -35,139 +35,117 @@ input, textarea, button {
 img {
   display: block; }
 
-.line, .row, .last-unit, .s-row {
+#uneditable .line, #uneditable .row, #uneditable .last-unit, #uneditable .s-row {
   width: 100%; }
-
-.unit {
+#uneditable .unit {
   float: left; }
-
-.unit-right {
+#uneditable .unit-right {
   float: right; }
-
-.size1of1 {
+#uneditable .size1of1 {
   width: 100%;
   float: none; }
-
-.size1of2 {
+#uneditable .size1of2 {
   width: 50%; }
-
-.size1of3 {
+#uneditable .size1of3 {
   width: 33.33333%; }
-
-.size2of3 {
+#uneditable .size2of3 {
   width: 66.66666%; }
-
-.size3of4 {
+#uneditable .size3of4 {
   width: 75%; }
-
-.size1of4 {
+#uneditable .size1of4 {
   width: 25%; }
-
-.size1of5 {
+#uneditable .size1of5 {
   width: 20%; }
-
-.size2of5 {
+#uneditable .size2of5 {
   width: 40%; }
-
-.size3of5 {
+#uneditable .size3of5 {
   width: 60%; }
-
-.size4of5 {
+#uneditable .size4of5 {
   width: 80%; }
-
-.size1of6 {
+#uneditable .size1of6 {
   width: 16.66666%; }
-
-.size4of6 {
+#uneditable .size4of6 {
   width: 66.66666%; }
-
-.size5of6 {
+#uneditable .size5of6 {
   width: 83.33333%; }
-
-.size1of10 {
+#uneditable .size1of10 {
   width: 10%; }
-
-.size3of10 {
+#uneditable .size3of10 {
   width: 30%; }
-
-.size7of10 {
+#uneditable .size7of10 {
   width: 70%; }
-
-.size9of10 {
+#uneditable .size9of10 {
   width: 90%; }
-
-.last-unit {
+#uneditable .last-unit {
   float: none;
   width: auto;
   _position: relative;
   _left: -3px;
   _margin-right: -3px; }
-
-.inner {
+#uneditable .inner {
   display: block;
   padding: 10px; }
-
-.spacer {
+#uneditable .spacer {
   width: 10px;
   height: 10px; }
-
-.s-hidden {
+#uneditable .s-hidden {
   display: none; }
 
 /*content*/
-#editor-container {
-  position: absolute;
-  bottom: 0px; }
-
-#toolbar {
-  position: relative; }
-  #toolbar #editor-selector {
+#uneditable {
+  text-align: left;
+  font-size: 14px;
+  /*editor*/ }
+  #uneditable #editor-container {
     position: absolute;
-    right: 10px;
     bottom: 0px; }
-    #toolbar #editor-selector .selector-item {
-      cursor: pointer;
-      display: inline-block;
-      opacity: 0.3;
-      transition: opacity 0.5s;
-      font-weight: 200; }
-      #toolbar #editor-selector .selector-item.open {
-        opacity: 0.7; }
-        #toolbar #editor-selector .selector-item.open:hover {
+  #uneditable #toolbar {
+    position: relative; }
+    #uneditable #toolbar #editor-selector {
+      position: absolute;
+      right: 10px;
+      bottom: 0px; }
+      #uneditable #toolbar #editor-selector .selector-item {
+        cursor: pointer;
+        display: inline-block;
+        opacity: 0.3;
+        transition: opacity 0.5s;
+        font-weight: 200; }
+        #uneditable #toolbar #editor-selector .selector-item.open {
+          opacity: 0.7; }
+          #uneditable #toolbar #editor-selector .selector-item.open:hover {
+            opacity: 1; }
+        #uneditable #toolbar #editor-selector .selector-item:hover {
           opacity: 1; }
-      #toolbar #editor-selector .selector-item:hover {
-        opacity: 1; }
-  #toolbar #chat {
-    position: absolute;
-    left: 10px;
-    bottom: 0px; }
-    #toolbar #chat .messages-container .chat-item {
-      opacity: 0;
-      transition: opacity 1s; }
-      #toolbar #chat .messages-container .chat-item .alias {
-        font-weight: bold; }
-    #toolbar #chat .input-container {
-      display: none; }
-
-/*editor*/
-#editor {
-  -webkit-box-shadow: inset 0 20px 20px -20px rgba(0, 0, 0, 0.8);
-  -moz-box-shadow: inset 0 20px 20px -20px rgba(0, 0, 0, 0.8);
-  box-shadow: inset 0 20px 20px -20px rgba(0, 0, 0, 0.8);
-  padding: 10px;
-  background-color: #002b36;
-  overflow: hidden;
-  height: 300px;
-  transition: height 1s; }
-  #editor .closed {
-    width: 0%; }
-  #editor > div {
-    height: 100%;
-    transition: width 1s; }
-
-.spacer {
-  display: inline-block;
-  width: 10px; }
-
-.shadow-land {
-  display: none; }
+    #uneditable #toolbar #chat {
+      position: absolute;
+      left: 10px;
+      bottom: 0px; }
+      #uneditable #toolbar #chat span:focus {
+        outline: 0; }
+      #uneditable #toolbar #chat .messages-container .chat-item {
+        opacity: 0;
+        transition: opacity 1s; }
+        #uneditable #toolbar #chat .messages-container .chat-item .alias {
+          font-weight: bold; }
+      #uneditable #toolbar #chat .input-container {
+        display: none; }
+  #uneditable #editor {
+    -webkit-box-shadow: inset 0 20px 20px -20px rgba(0, 0, 0, 0.8);
+    -moz-box-shadow: inset 0 20px 20px -20px rgba(0, 0, 0, 0.8);
+    box-shadow: inset 0 20px 20px -20px rgba(0, 0, 0, 0.8);
+    padding: 10px;
+    background-color: #002b36;
+    overflow: hidden;
+    height: 300px;
+    transition: height 1s; }
+    #uneditable #editor .closed {
+      width: 0%; }
+    #uneditable #editor > div {
+      height: 100%;
+      transition: width 1s; }
+  #uneditable .spacer {
+    display: inline-block;
+    width: 10px; }
+  #uneditable .shadow-land {
+    display: none; }

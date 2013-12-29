@@ -46,7 +46,6 @@ Editor.Interface.EditField.Javascript = function() {
   this.type = 'javascript';
   this.mode = 'javascript';
   this.value = 'function someFunction() { alert("boom") };';
-
   this.init();
 };
 Editor.Interface.EditField.Javascript.prototype = new Editor.Interface.EditField();

@@ -11,7 +11,10 @@ Editor.Receiver = function() {
   };
 
   this.listen = function() {
-    socket.on('code submit', function(data) { $sandbox[data.type].html(data.code); });
+    socket.on('code submit', function(data) {
+      var type = data.type, code = data.code;
+      (type == 'javascript') ?  eval(code) : $sandbox[type].html(code);
+    });
   };
 
   this.init();

@@ -3,93 +3,101 @@
 
 $spacing: 10px;
 $editor-height: $spacing * 15;
+$font-size: 14px;
 
 /*content*/
 
-#editor-container {
-  position: absolute;
-  bottom: 0px;
-}
+#__uneditable {
+  text-align: left;
+  font-size: $font-size;
 
-#toolbar {
-  position:relative;
-
-  #editor-selector {
+  #editor-container {
     position: absolute;
-    right: $spacing;
     bottom: 0px;
+  }
 
-    .selector-item {
-      cursor: pointer;
-      display: inline-block;
-      opacity: 0.3;
-      transition: opacity 0.5s;
-      font-weight: 200;
+  #toolbar {
+    position:relative;
 
-      &.open {
-        opacity: 0.7;
+    #editor-selector {
+      position: absolute;
+      right: $spacing;
+      bottom: 0px;
+
+      .selector-item {
+        cursor: pointer;
+        display: inline-block;
+        opacity: 0.3;
+        transition: opacity 0.5s;
+        font-weight: 200;
+
+        &.open {
+          opacity: 0.7;
+
+          &:hover {
+            opacity: 1;
+          }
+        }
 
         &:hover {
           opacity: 1;
         }
       }
+    }
 
-      &:hover {
-        opacity: 1;
+    #chat {
+      position: absolute;
+      left: $spacing;
+      bottom: 0px;
+
+      span:focus {
+        outline: 0;
       }
 
-    }
-  }
+      .messages-container .chat-item {
+        opacity: 0;
+        transition: opacity 1s;
 
-  #chat {
-    position: absolute;
-    left: $spacing;
-    bottom: 0px;
+        .alias {
+          font-weight: bold;
+        }
+      }
 
-    .messages-container .chat-item {
-      opacity: 0;
-      transition: opacity 1s;
-
-      .alias {
-        font-weight: bold;
+      .input-container {
+        display: none;
       }
     }
+  }
 
-    .input-container {
-      display: none;
+  /*editor*/
+
+  #editor {
+    -webkit-box-shadow: inset 0 20px 20px -20px rgba(0,0,0,0.8);
+    -moz-box-shadow: inset 0 20px 20px -20px rgba(0,0,0,0.8);
+    box-shadow: inset 0 20px 20px -20px rgba(0,0,0,0.8);
+
+    padding: $spacing;
+    background-color: #002b36;
+    overflow: hidden;
+    height: 300px;
+    transition: height 1s;
+
+    .closed {
+      width: 0%;
+    }
+
+    > div {
+      height: 100%;
+      transition: width 1s;
     }
   }
-}
 
-/*editor*/
-
-#editor {
-  -webkit-box-shadow: inset 0 20px 20px -20px rgba(0,0,0,0.8);
-  -moz-box-shadow: inset 0 20px 20px -20px rgba(0,0,0,0.8);
-  box-shadow: inset 0 20px 20px -20px rgba(0,0,0,0.8);
-
-  padding: $spacing;
-  background-color: #002b36;
-  overflow: hidden;
-  height: 300px;
-  transition: height 1s;
-
-  .closed {
-    width: 0%;
+  .spacer {
+    display: inline-block;
+    width: $spacing;
   }
 
-  > div {
-    height: 100%;
-    transition: width 1s;
-
+  .shadow-land {
+    display: none;
   }
-}
-
-.spacer {
-  display: inline-block;
-  width: $spacing;
-}
-
-.shadow-land {
-  display: none;
 }

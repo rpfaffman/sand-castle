@@ -3,27 +3,28 @@ html
   head
     title Sand Castle
     include partials/js_manifest
-    link(rel='stylesheet' type='text/css' href='assets/stylesheets/app.css')
-    link(rel='stylesheet' type='text/css' href='assets/vendor/stylesheets/codemirror.css')
-    link(rel='stylesheet' type='text/css' href='assets/vendor/stylesheets/codemirror-solarized-theme.css')
   body
     style#stylesheet
     #content
-    #editor-container.row
-      #toolbar.row
-        include partials/chat
-        #editor-selector.unit.last-unit
-          h3.selector-item toggle:
-          .spacer
-          .spacer
-          h2#html-switch.selector-item.open html
-          .spacer
-          h2#css-switch.selector-item.open css
-          .spacer
-          h2#javascript-switch.selector-item.open javascript
-      #editor.row
-        #htmlEditField.open.unit.size1of3
-        #cssEditField.open.unit.size1of3
-        #javascriptEditField.open.unit.size1of3
-    script#javascript(type='text/javascript')
-    .shadow-land
+    link(rel='stylesheet' type='text/css' href='assets/stylesheets/app.css')
+    link(rel='stylesheet' type='text/css' href='assets/vendor/stylesheets/codemirror.css')
+    link(rel='stylesheet' type='text/css' href='assets/vendor/stylesheets/codemirror-solarized-theme.css')
+    #__uneditable
+      #editor-container.row
+        #toolbar.row
+          include partials/chat
+          #editor-selector.unit.last-unit
+            h3.selector-item toggle:
+            .spacer
+            .spacer
+            h2#html-switch.selector-item.open html
+            .spacer
+            h2#css-switch.selector-item.open css
+            .spacer
+            h2#javascript-switch.selector-item.open javascript
+        #editor.row
+          #htmlEditField.open.unit.size1of3
+          #cssEditField.open.unit.size1of3
+          #javascriptEditField.open.unit.size1of3
+      script#javascript(type='text/javascript')
+      .shadow-land
