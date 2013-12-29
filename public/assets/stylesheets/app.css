@@ -35,102 +35,102 @@ input, textarea, button {
 img {
   display: block; }
 
-#uneditable .line, #uneditable .row, #uneditable .last-unit, #uneditable .s-row {
+#__uneditable .line, #__uneditable .row, #__uneditable .last-unit, #__uneditable .s-row {
   width: 100%; }
-#uneditable .unit {
+#__uneditable .unit {
   float: left; }
-#uneditable .unit-right {
+#__uneditable .unit-right {
   float: right; }
-#uneditable .size1of1 {
+#__uneditable .size1of1 {
   width: 100%;
   float: none; }
-#uneditable .size1of2 {
+#__uneditable .size1of2 {
   width: 50%; }
-#uneditable .size1of3 {
+#__uneditable .size1of3 {
   width: 33.33333%; }
-#uneditable .size2of3 {
+#__uneditable .size2of3 {
   width: 66.66666%; }
-#uneditable .size3of4 {
+#__uneditable .size3of4 {
   width: 75%; }
-#uneditable .size1of4 {
+#__uneditable .size1of4 {
   width: 25%; }
-#uneditable .size1of5 {
+#__uneditable .size1of5 {
   width: 20%; }
-#uneditable .size2of5 {
+#__uneditable .size2of5 {
   width: 40%; }
-#uneditable .size3of5 {
+#__uneditable .size3of5 {
   width: 60%; }
-#uneditable .size4of5 {
+#__uneditable .size4of5 {
   width: 80%; }
-#uneditable .size1of6 {
+#__uneditable .size1of6 {
   width: 16.66666%; }
-#uneditable .size4of6 {
+#__uneditable .size4of6 {
   width: 66.66666%; }
-#uneditable .size5of6 {
+#__uneditable .size5of6 {
   width: 83.33333%; }
-#uneditable .size1of10 {
+#__uneditable .size1of10 {
   width: 10%; }
-#uneditable .size3of10 {
+#__uneditable .size3of10 {
   width: 30%; }
-#uneditable .size7of10 {
+#__uneditable .size7of10 {
   width: 70%; }
-#uneditable .size9of10 {
+#__uneditable .size9of10 {
   width: 90%; }
-#uneditable .last-unit {
+#__uneditable .last-unit {
   float: none;
   width: auto;
   _position: relative;
   _left: -3px;
   _margin-right: -3px; }
-#uneditable .inner {
+#__uneditable .inner {
   display: block;
   padding: 10px; }
-#uneditable .spacer {
+#__uneditable .spacer {
   width: 10px;
   height: 10px; }
-#uneditable .s-hidden {
+#__uneditable .s-hidden {
   display: none; }
 
 /*content*/
-#uneditable {
+#__uneditable {
   text-align: left;
   font-size: 14px;
   /*editor*/ }
-  #uneditable #editor-container {
+  #__uneditable #editor-container {
     position: absolute;
     bottom: 0px; }
-  #uneditable #toolbar {
+  #__uneditable #toolbar {
     position: relative; }
-    #uneditable #toolbar #editor-selector {
+    #__uneditable #toolbar #editor-selector {
       position: absolute;
       right: 10px;
       bottom: 0px; }
-      #uneditable #toolbar #editor-selector .selector-item {
+      #__uneditable #toolbar #editor-selector .selector-item {
         cursor: pointer;
         display: inline-block;
         opacity: 0.3;
         transition: opacity 0.5s;
         font-weight: 200; }
-        #uneditable #toolbar #editor-selector .selector-item.open {
+        #__uneditable #toolbar #editor-selector .selector-item.open {
           opacity: 0.7; }
-          #uneditable #toolbar #editor-selector .selector-item.open:hover {
+          #__uneditable #toolbar #editor-selector .selector-item.open:hover {
             opacity: 1; }
-        #uneditable #toolbar #editor-selector .selector-item:hover {
+        #__uneditable #toolbar #editor-selector .selector-item:hover {
           opacity: 1; }
-    #uneditable #toolbar #chat {
+    #__uneditable #toolbar #chat {
       position: absolute;
       left: 10px;
       bottom: 0px; }
-      #uneditable #toolbar #chat span:focus {
+      #__uneditable #toolbar #chat span:focus {
         outline: 0; }
-      #uneditable #toolbar #chat .messages-container .chat-item {
+      #__uneditable #toolbar #chat .messages-container .chat-item {
         opacity: 0;
         transition: opacity 1s; }
-        #uneditable #toolbar #chat .messages-container .chat-item .alias {
+        #__uneditable #toolbar #chat .messages-container .chat-item .alias {
           font-weight: bold; }
-      #uneditable #toolbar #chat .input-container {
+      #__uneditable #toolbar #chat .input-container {
         display: none; }
-  #uneditable #editor {
+  #__uneditable #editor {
     -webkit-box-shadow: inset 0 20px 20px -20px rgba(0, 0, 0, 0.8);
     -moz-box-shadow: inset 0 20px 20px -20px rgba(0, 0, 0, 0.8);
     box-shadow: inset 0 20px 20px -20px rgba(0, 0, 0, 0.8);
@@ -139,13 +139,13 @@ img {
     overflow: hidden;
     height: 300px;
     transition: height 1s; }
-    #uneditable #editor .closed {
+    #__uneditable #editor .closed {
       width: 0%; }
-    #uneditable #editor > div {
+    #__uneditable #editor > div {
       height: 100%;
       transition: width 1s; }
-  #uneditable .spacer {
+  #__uneditable .spacer {
     display: inline-block;
     width: 10px; }
-  #uneditable .shadow-land {
+  #__uneditable .shadow-land {
     display: none; }
