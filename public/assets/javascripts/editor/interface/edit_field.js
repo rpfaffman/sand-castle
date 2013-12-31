@@ -9,8 +9,17 @@ Editor.Interface.EditField = function(args) {
   this.init = function(args) {
     var fieldEl = $(this.fieldSelector)[0];
     this.field = CodeMirror(fieldEl, _.extend(defaultOptions, { mode: this.mode, value: this.value } ));
-    this.field.setOption('extraKeys', { 'Shift-Enter': this.submitCode.bind(this) });
+    this.field.setOption('extraKeys', { 'Shift-Enter': this.validateCode.bind(this) });
     setTimeout(refreshField.bind(this), 100); // problem with gutter sizing without refresh
+  };
+
+  this.validateCode = function() {
+    try {
+      eval(this.field.getValue());
+      this.submitCode();
+    } catch(err) {
+      alert('There was an error processing your Javascript: ' + err.message);
+    }
   };
 
   this.submitCode = function() {
