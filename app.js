@@ -35,7 +35,7 @@ var edit = io
 
     socket.on('code submit', function(data) {
       sandbox[data.type] = data.code;
-      socket.broadcast.emit('code submit', data);
+      (data.type === 'javascript') ? socket.broadcast.emit('code submit', data) : edit.emit('code submit', data);
     });
 
     socket.on('code edit', function(data) { socket.broadcast.emit('code edit', data); });

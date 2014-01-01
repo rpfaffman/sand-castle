@@ -4,7 +4,7 @@ Editor.Interface.Streamer = function(opts) {
 
   this.init = function() {
     assignHandlers();
-    syncChanges();
+    listen();
   };
 
   // private methods
@@ -19,9 +19,13 @@ Editor.Interface.Streamer = function(opts) {
     socket.emit('code edit', { type: type, changes: mirrors[type].getValue() });
   };
 
-  var syncChanges = function() {
-    socket.on('code edit', function(data) { mirrors[data.type].setValue(data.changes); });
+  var syncChanges = function(data) {
+    var cursorPosition = mirrors[data.type].getCursor();
+    mirrors[data.type].setValue(data.changes);
+    mirrors[data.type].setCursor(cursorPosition);
   };
+
+  var listen = function() { socket.on('code edit', syncChanges); };
 
   this.init();
 };

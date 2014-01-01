@@ -13,7 +13,7 @@ Editor.Receiver = function() {
   this.listen = function() {
     socket.on('code submit', function(data) {
       var type = data.type, code = data.code;
-      (type == 'javascript') ?  eval(code) : $sandbox[type].html(code);
+      (type === 'javascript') ? eval(code) : $sandbox[type].html(code);
     });
   };
 
