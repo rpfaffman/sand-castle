@@ -7,10 +7,7 @@ var sass = require('node-sass');
 var port = process.env.PORT || 3000;
 
 //initialize the database
-var mongoUrl = process.env.MONGOHQ_URL || 'mongodb';
-var mongojs = require('mongojs');
-var db = mongojs(mongoUrl, ['projects']);
-App.Config.database = db;
+var db = require('./app/db').database;
 
 // configuration
 app.set('views', __dirname + '/views');

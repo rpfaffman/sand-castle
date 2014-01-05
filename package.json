@@ -11,6 +11,6 @@
     "jade": "latest",
     "node-sass": "latest",
     "socket.io": "latest",
-    "mongodb": "latest"
+    "mongojs": "latest"
   }
 }
