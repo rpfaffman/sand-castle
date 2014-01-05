@@ -23,6 +23,11 @@ app.use(sass.middleware({
 
 app.get('/', function(request, response) { response.render('index'); });
 
+app.get('/favicon.ico', function(request, response) {
+  response.writeHead(200, {'Content-Type': 'image/x-icon'} );
+  response.end();
+});
+
 app.get('/destroy', function(request, response) { db.projects.remove(); response.render('index'); });
 
 app.get('/:project', function(request, response) {
@@ -35,7 +40,6 @@ app.get('/:project', function(request, response) {
     }
     App.Config.project = projectName;
   });
-
   response.render('index');
 });
 
