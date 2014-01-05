@@ -96,6 +96,8 @@ img {
   text-align: left;
   font-size: 14px;
   /*editor*/ }
+  #__uneditable .CodeMirror-vscrollbar, #__uneditable .CodeMirror-hscrollbar {
+    display: none; }
   #__uneditable #editor-container {
     position: absolute;
     bottom: 0px; }

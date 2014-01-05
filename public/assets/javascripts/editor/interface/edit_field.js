@@ -10,7 +10,7 @@ Editor.Interface.EditField = function(args) {
     var fieldEl = $(this.fieldSelector)[0];
     this.field = CodeMirror(fieldEl, _.extend(defaultOptions, { mode: this.mode, value: this.value } ));
     this.field.setOption('extraKeys', { 'Shift-Enter': this.submitCode.bind(this) });
-    setTimeout(refreshField.bind(this), 100); // problem with gutter sizing without refresh
+    setTimeout(prepare.bind(this), 100); // problem with gutter sizing and scrollbars without refresh
   };
 
   this.validateJavascript = function() {
@@ -31,8 +31,14 @@ Editor.Interface.EditField = function(args) {
   };
 
   // private methods
+  var prepare = function() {
+    refresh.bind(this)();
+    hideScrollbars.bind(this)();
+  };
 
-  var refreshField = function() { this.field.refresh(); };
+  var refresh = function() { this.field.refresh(); };
+
+  var hideScrollbars = function() { $('.CodeMirror-vscrollbar, .CodeMirror-hscrollbar').hide(); };
 
   var socketEmit = function() { socket.emit('code submit', { type: this.type, code: this.field.getValue() }) };
 };
