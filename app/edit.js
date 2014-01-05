@@ -5,7 +5,6 @@ var db = App.Config.database;
 var edit = io
   .of('/edit')
   .on('connection', function(socket) {
-    console.log('setting socket param project to ' + App.Config.project);
     socket.set('project', App.Config.project);
     loadProject(socket);
     socket.on('code submit', function(data) {
@@ -26,14 +25,17 @@ var edit = io
 
 var loadProject = function(socket) {
   socket.get('project', function(err, projectName) {
-    console.log('attempting to find project with this name: ' + projectName);
     db.projects.find({name: projectName}, function(err, projects) {
       if (projects.length != 0) {
         var project = projects[0];
         socket.emit('code submit', { type: 'html', code: project.html });
         socket.emit('code submit', { type: 'css', code: project.css });
         socket.emit('code submit', { type: 'javascript', code: project.javascript });
+        socket.emit('code edit', { type: 'html', changes: project.html });
+        socket.emit('code edit', { type: 'css', changes: project.css });
+        socket.emit('code edit', { type: 'javascript', changes: project.javascript });
       }
     });
   });
 };
+

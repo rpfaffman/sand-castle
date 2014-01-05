@@ -1,5 +1,4 @@
 var App = require('./app/config');
-
 var express = require('express');
 var _ = require('underscore');
 var partials = require('express-partials');
@@ -8,7 +7,7 @@ var sass = require('node-sass');
 var port = process.env.PORT || 3000;
 
 //initialize the database
-require('./app/db');
+var db = require('./app/db').database;
 
 // configuration
 app.set('views', __dirname + '/views');
@@ -35,9 +34,6 @@ app.get('/:project', function(request, response) {
     }
     App.Config.project = projectName;
   });
-
-  console.log('projectName set to ' + projectName);
-  console.log("App.Config.project set to " + App.Config.project);
 
   response.render('index');
 });
