@@ -10,6 +10,7 @@
     "underscore": "latest",
     "jade": "latest",
     "node-sass": "latest",
-    "socket.io": "latest"
+    "socket.io": "latest",
+    "mongodb": "latest"
   }
 }

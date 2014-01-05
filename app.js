@@ -4,6 +4,12 @@ var partials = require('express-partials');
 var app = express();
 var sass = require('node-sass');
 var port = process.env.PORT || 3000;
+var mongoUrl = process.env.MONGOHQ_URL || 'mongodb';
+
+// persistence
+var mongojs = require('mongojs');
+var db = mongojs(mongoUrl, ['projects']);
+console.log('connected to mongo db with database name: ' + mongoUrl);
 
 // configuration
 app.set('views', __dirname + '/views');
@@ -17,25 +23,61 @@ app.use(sass.middleware({
   debug: true
 }));
 
-var sandbox = {};
-sandbox.html = '';
-sandbox.javascript = '';
-sandbox.css = '';
+app.get('/', function(request, response) { response.render('index'); });
 
-app.get('/', function(request, response) {
+app.get('/destroy', function(request, response) { db.projects.remove(); });
+
+var currentProject = 'default';
+app.get('/:project', function(request, response) {
+  var projectName = request.params['project'];
+  db.projects.find({name: projectName}, function(error, projects) {
+    if (_.isEmpty(projects)) {
+      console.log('no project found.  creating new one');
+      db.projects.save({name: projectName, html: projectName, css: '', javascript: ''});
+    } else {
+      console.log(projects);
+    }
+    currentProject = projectName;
+  });
+
+  console.log('=============================')
+  db.projects.find(function(err, projects) {
+    console.log(projects);
+  });
   response.render('index');
 });
 
 var io = require('socket.io').listen(app.listen(port));
 
+var loadProject = function(socket) {
+  socket.get('project', function(err, projectName) {
+    db.projects.find({name: projectName}, function(err, projects) {
+      if (projects.length != 0) {
+        var project = projects[0];
+        socket.emit('code submit', { type: 'html', code: project.html });
+        socket.emit('code submit', { type: 'css', code: project.css });
+        socket.emit('code submit', { type: 'javascript', code: project.javascript });
+      }
+    });
+  });
+};
+
 var edit = io
   .of('/edit')
   .on('connection', function(socket) {
-    edit.emit('edit submit', { type: 'html', code: sandbox['html'] });
-
+    socket.set('project', currentProject);
+    loadProject(socket);
     socket.on('code submit', function(data) {
-      sandbox[data.type] = data.code;
       (data.type === 'javascript') ? socket.broadcast.emit('code submit', data) : edit.emit('code submit', data);
+
+      var projectData = {};
+      projectData[data.type] = data.code;
+      socket.get('project', function(err, projectName) {
+        db.projects.findAndModify({
+          query: { name: projectName },
+          update: { $set: projectData }
+        });
+      });
     });
 
     socket.on('code edit', function(data) { socket.broadcast.emit('code edit', data); });

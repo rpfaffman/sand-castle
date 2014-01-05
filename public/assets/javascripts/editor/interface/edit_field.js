@@ -38,7 +38,9 @@ Editor.Interface.EditField = function(args) {
 
   var refresh = function() { this.field.refresh(); };
 
-  var hideScrollbars = function() { $('.CodeMirror-vscrollbar, .CodeMirror-hscrollbar').hide(); };
+  var hideScrollbars = function() {
+    $('.CodeMirror-vscrollbar, .CodeMirror-hscrollbar, .CodeMirror-scrollbar-filler').hide();
+  };
 
   var socketEmit = function() { socket.emit('code submit', { type: this.type, code: this.field.getValue() }) };
 };
