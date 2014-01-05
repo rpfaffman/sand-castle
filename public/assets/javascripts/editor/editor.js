@@ -3,7 +3,7 @@
 var Editor = {};
 
 Editor.Config = {
-  socket: io.connect(window.location.protocol + '//' + window.location.host + '/edit'),
+  socket: io.connect(window.location.protocol + '//' + window.location.host + window.location.pathname),
 
   //interface
   editorContainerSelector: '#editor-container',

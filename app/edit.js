@@ -2,9 +2,12 @@ var App = require('./config');
 var io = App.Config.io;
 var db = App.Config.database;
 
-var edit = io
-  .of('/edit')
+var connect = function(room) {
+  console.log('connect to room called ' + room);
+  var edit = io
+  .of('/' + room)
   .on('connection', function(socket) {
+    console.log('connection established for editor to room ' + room);
     socket.set('project', App.Config.project);
     loadProject(socket);
     socket.on('code submit', function(data) {
@@ -22,6 +25,7 @@ var edit = io
 
     socket.on('code edit', function(data) { socket.broadcast.emit('code edit', data); });
   });
+};
 
 var loadProject = function(socket) {
   socket.get('project', function(err, projectName) {
@@ -39,3 +43,4 @@ var loadProject = function(socket) {
   });
 };
 
+exports.connect = connect;

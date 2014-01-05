@@ -27,6 +27,7 @@ app.get('/destroy', function(request, response) { db.projects.remove(); response
 
 app.get('/:project', function(request, response) {
   var projectName = request.params['project'];
+  require('./app/edit').connect(projectName);
   var db = App.Config.database;
   db.projects.find({name: projectName}, function(error, projects) {
     if (_.isEmpty(projects)) {
@@ -41,8 +42,6 @@ app.get('/:project', function(request, response) {
 var io = require('socket.io').listen(app.listen(port));
 App.Config.io = io;
 
-
-require('./app/edit');
 require('./app/chat');
 
 console.log('Sand Castle server started on port ' + port + '.');
