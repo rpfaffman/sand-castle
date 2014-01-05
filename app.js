@@ -14,6 +14,7 @@ app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
 app.engine('jade', require('jade').__express);
 app.use(express.static(__dirname + '/public'));
+app.use(express.favicon());
 app.use(partials());
 app.use(sass.middleware({
   src: __dirname,
@@ -22,11 +23,6 @@ app.use(sass.middleware({
 }));
 
 app.get('/', function(request, response) { response.render('index'); });
-
-app.get('/favicon.ico', function(request, response) {
-  response.writeHead(200, {'Content-Type': 'image/x-icon'} );
-  response.end();
-});
 
 app.get('/destroy', function(request, response) { db.projects.remove(); response.render('index'); });
 
