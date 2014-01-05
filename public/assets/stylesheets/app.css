@@ -92,12 +92,30 @@ img {
   display: none; }
 
 /*content*/
+@keyframes pulse {
+  from {
+    opacity: 0.2; }
+
+  to {
+    opacity: 1; } }
+
+@-webkit-keyframes pulse {
+  from {
+    opacity: 0.2; }
+
+  to {
+    opacity: 1; } }
+
+.loading {
+  margin-top: 20px;
+  text-align: center;
+  animation: pulse 1s infinite;
+  -webkit-animation: pulse 1s infinite; }
+
 #__uneditable {
   text-align: left;
   font-size: 14px;
   /*editor*/ }
-  #__uneditable .CodeMirror-vscrollbar, #__uneditable .CodeMirror-hscrollbar {
-    display: none; }
   #__uneditable #editor-container {
     position: absolute;
     bottom: 0px; }

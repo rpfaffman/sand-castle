@@ -6,6 +6,22 @@ $editor-height: $spacing * 15;
 $font-size: 14px;
 
 /*content*/
+@keyframes pulse {
+  from { opacity: .2 }
+  to { opacity: 1 }
+}
+
+@-webkit-keyframes pulse {
+  from { opacity: .2 }
+  to { opacity: 1 }
+}
+
+.loading {
+  margin-top: 20px;
+  text-align: center;
+  animation: pulse 1s infinite;
+  -webkit-animation: pulse 1s infinite;
+}
 
 #__uneditable {
   text-align: left;

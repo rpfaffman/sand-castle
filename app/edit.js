@@ -3,11 +3,9 @@ var io = App.Config.io;
 var db = App.Config.database;
 
 var connect = function(room) {
-  console.log('connect to room called ' + room);
   var edit = io
   .of('/' + room)
   .on('connection', function(socket) {
-    console.log('connection established for editor to room ' + room);
     socket.set('project', App.Config.project);
     loadProject(socket);
     socket.on('code submit', function(data) {

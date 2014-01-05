@@ -50,7 +50,7 @@ Editor.Interface.EditField.Html = function() {
   this.fieldSelector = Editor.Config.htmlEditSelector;
   this.type = 'html';
   this.mode = { name: 'xml', alignCDATA: true };
-  this.value = '<h1>Try</h1>\n<h2>editing</h2>\n<h3>this</h3>\n<h4>html</h4>';
+  this.value = 'Syncing HTML with server...';
   this.init();
 };
 Editor.Interface.EditField.Html.prototype = new Editor.Interface.EditField();
@@ -59,7 +59,7 @@ Editor.Interface.EditField.Css = function() {
   this.fieldSelector = Editor.Config.cssEditSelector;
   this.type = 'css';
   this.mode = 'css';
-  this.value = '#content { text-align: center; }';
+  this.value = 'Syncing CSS with server...';
   this.init();
 };
 Editor.Interface.EditField.Css.prototype = new Editor.Interface.EditField();
@@ -68,7 +68,7 @@ Editor.Interface.EditField.Javascript = function() {
   this.fieldSelector = Editor.Config.javascriptEditSelector;
   this.type = 'javascript';
   this.mode = 'javascript';
-  this.value = 'function someFunction() { alert("boom") };';
+  this.value = 'Syncing Javascript with server...';
   this.init();
 };
 Editor.Interface.EditField.Javascript.prototype = new Editor.Interface.EditField();
