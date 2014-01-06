@@ -117,7 +117,7 @@ img {
   font-size: 14px;
   /*editor*/ }
   #__uneditable #editor-container {
-    position: absolute;
+    position: fixed;
     bottom: 0px; }
   #__uneditable #toolbar {
     position: relative; }

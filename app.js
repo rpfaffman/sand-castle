@@ -22,9 +22,18 @@ app.use(sass.middleware({
   debug: true
 }));
 
-app.get('/', function(request, response) { response.render('index'); });
+app.get('/', function(request, response) {
+  response.redirect('/example');
+});
 
-app.get('/destroy', function(request, response) { db.projects.remove(); response.render('index'); });
+app.get('/__reset', function(request, response) {
+  db.projects.remove();
+  var exampleProject = require('./app/fixtures').exampleProject;
+  db.projects.save({name: 'example', html: exampleProject.html, css: exampleProject.css, javascript: exampleProject.javascript}, function() {
+    response.redirect('example');
+  });
+  //response.redirect('/example');
+});
 
 app.get('/:project', function(request, response) {
   var projectName = request.params['project'];
