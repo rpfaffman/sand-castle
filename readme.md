@@ -1,13 +1,14 @@
 #Sand Castle
 Sand Castle is a simple, collaborative brainstorming/wireframing tool
-for building simple frontend code.  The application uses web sockets to
+for building simple front-end code.  The application uses web sockets to
 allow users to edit and update code in real time: users can see other
 users type code as they type it, and they can see changes in the code
 made as other users submit their code.  The application also includes a
-simple chat feature that allows users to communicate while they code.
+simple chat feature that allows users to communicate while they
+collaborate.
 
 Check out the GitHub page
-[here](https://github.com/roy-pfaffer/sand-castle).  Or, check you can
+[here](https://github.com/roy-pfaffer/sand-castle).  Or, you can
 check out the project on Heroku
 [here](http://sand-castle.herokuapp.com).
 
