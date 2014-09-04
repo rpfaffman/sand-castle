@@ -5,12 +5,12 @@
   "main": "app.js",
   "description": "Collaborative frontend brainstorming and wireframing.",
   "dependencies": {
-    "express": "latest",
-    "express-partials": "latest",
+    "express": "3.4.4",
+    "express-partials": "0.3.0",
     "underscore": "latest",
-    "jade": "latest",
-    "node-sass": "latest",
-    "socket.io": "latest",
-    "mongojs": "latest"
+    "jade": "1.6.0",
+    "node-sass": "0.9.3",
+    "socket.io": "0.9.14",
+    "mongojs": "0.14.1"
   }
 }
